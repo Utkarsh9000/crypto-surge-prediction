@@ -14,6 +14,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 from .features import FEATURE_COLS, SURGE_HORIZON_DAYS, SURGE_THRESHOLD, build_features
+from .live import predict_live
 
 
 class Candle(BaseModel):
@@ -170,6 +171,28 @@ def alerts(req: PredictRequest) -> PredictResponse:
 
     results = _to_results(scored, horizon=horizon)
     return PredictResponse(count=len(results), results=results)
+
+
+@app.get("/surge")
+def live_surge(
+    coin_id: str,
+    vs_currency: str = "usd",
+    horizon: int = 1,
+    days: int = 365,
+    surge_threshold: float = SURGE_THRESHOLD,
+    refresh: bool = False,
+) -> dict[str, Any]:
+    try:
+        return predict_live(
+            coin_id=coin_id,
+            vs_currency=vs_currency,
+            days=days,
+            horizon=horizon,
+            surge_threshold=surge_threshold,
+            refresh=refresh,
+        )
+    except Exception as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
 
 
 def main() -> None:

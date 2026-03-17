@@ -74,6 +74,7 @@ Endpoints:
 - `GET /health`
 - `POST /predict` returns probabilities and predicted returns
 - `POST /alerts` returns only rows above the surge threshold
+- `GET /surge` pulls live market data and predicts the next-day surge probability
 
 ## Deploy
 ### Vercel
@@ -82,6 +83,16 @@ This repo is Vercel-ready. Vercel supports FastAPI with zero configuration; it a
 The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide.
 
 Note: On Vercel, the API endpoints are available under `/api` (for example `/api/health`, `/api/predict`, `/api/alerts`).
+Live surge example:
+```
+GET /api/surge?coin_id=bitcoin&horizon=1&days=365
+```
+
+For higher rate limits and longer history, set:
+```
+COINGECKO_API_KEY
+COINGECKO_KEY_TYPE=pro
+```
 
 ### Docker
 ```powershell
