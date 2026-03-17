@@ -82,9 +82,9 @@ This repo is Vercel-ready. Vercel supports FastAPI with zero configuration; it a
 
 The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide.
 
-Note: On Vercel, the API endpoints are available under `/api` (for example `/api/health`, `/api/predict`, `/api/alerts`).
-Live surge example:
+Note: On Vercel, endpoints are available at `/` and `/api` (we add a rewrite so both work). Examples:
 ```
+GET /surge?coin_id=bitcoin&horizon=1&days=365
 GET /api/surge?coin_id=bitcoin&horizon=1&days=365
 ```
 
