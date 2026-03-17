@@ -77,9 +77,11 @@ Endpoints:
 
 ## Deploy
 ### Vercel
-This repo is Vercel-ready. Vercel supports FastAPI with zero configuration and will detect an `app` instance in a standard entrypoint like `app.py`. This project exports `app` from `app.py`, and also sets `[project.scripts] app = "cryptosurge.api:app"` so Vercel can find it even if the app lives in a module. citeturn2search0
+This repo is Vercel-ready. Vercel supports FastAPI with zero configuration and detects an `app` instance defined in `app.py` or `index.py`. This project exports `app` from `app.py`, so Vercel can deploy it directly. citeturn1search4turn1search6
 
-After you push to GitHub, import the repo in Vercel and deploy. No extra config is required for FastAPI projects. citeturn2search0turn2search1
+The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide. citeturn1search0
+
+We include `vercel.json` with `excludeFiles` to keep the Python function bundle small, since Python functions include reachable files by default and have bundle size limits. citeturn1search0turn1search3
 
 ### Docker
 ```powershell

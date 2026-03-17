@@ -6,3 +6,4 @@ data/*.csv
 models/
 *.joblib
 *.log
+.npm-global/
