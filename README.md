@@ -77,7 +77,7 @@ Endpoints:
 
 ## Deploy
 ### Vercel
-This repo is Vercel-ready. Vercel supports FastAPI with zero configuration and detects an `app` instance defined in `app.py` or `index.py`. This project exports `app` from `app.py`, so Vercel can deploy it directly. citeturn1search4turn1search6
+This repo is Vercel-ready. Vercel supports FastAPI with zero configuration and detects an `app` instance defined in `api/index.py`. We provide `api/index.py` that re-exports the FastAPI `app` from `app.py`, so Vercel can deploy it directly. citeturn1search4turn1search6
 
 The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide. citeturn1search0
 
