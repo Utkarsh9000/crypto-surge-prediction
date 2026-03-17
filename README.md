@@ -77,11 +77,11 @@ Endpoints:
 
 ## Deploy
 ### Vercel
-This repo is Vercel-ready. Vercel supports FastAPI with zero configuration and detects an `app` instance defined in `api/index.py`. We provide `api/index.py` that re-exports the FastAPI `app` from `app.py`, so Vercel can deploy it directly. citeturn1search4turn1search6
+This repo is Vercel-ready. Vercel supports FastAPI with zero configuration; it auto-detects Python Serverless Functions when you add an `api/` directory at the project root. We provide `api/index.py` that re-exports the FastAPI `app` from `app.py`, so Vercel can deploy it directly.
 
-The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide. citeturn1search0
+The Python runtime respects `requires-python` and reads dependencies from `pyproject.toml` or `requirements.txt`, which we already provide.
 
-We include `vercel.json` with `excludeFiles` to keep the Python function bundle small, since Python functions include reachable files by default and have bundle size limits. citeturn1search0turn1search3
+Note: On Vercel, the API endpoints are available under `/api` (for example `/api/health`, `/api/predict`, `/api/alerts`).
 
 ### Docker
 ```powershell
